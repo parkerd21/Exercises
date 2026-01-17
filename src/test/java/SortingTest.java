@@ -90,13 +90,13 @@ public class SortingTest {
     }
   }
 
-    @Test
+  @Test
   public void test_quickSort()
   {
     int[] input = {13, 46, 24, 52, 20, 9};
     int[] expected = {9, 13, 20, 24, 46, 52};
 
-    Sorting.quickSort(input);
+    Sorting.quickSort(input, 0, input.length - 1);
 
     for (int i = 0; i < expected.length; i++)
     {

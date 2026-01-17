@@ -173,8 +173,43 @@ public class Sorting {
     recursiveInsertionSort(arr, high + 1, n);
   }
 
-  public static void quickSort(int[] arr)
+  // similar time complexity to merge sort O(n logn) | worst case is O(n^2) when the pivot choices consistently lead to unbalanced partitions.
+  // but the space complexity is better, O(1) - doesn't use any extra temporary arrays
+public static void quickSort(int[] arr, int low, int high)
   {
+    // 1. pick a pivot and place it in its correct place in the sorted array
+    // 2. Smaller on the left. Larger on the right
+
+    if (low < high)
+    {
+      int partitionIndex =  partition(arr, low, high);
+      quickSort(arr, low, partitionIndex - 1);
+      quickSort(arr, partitionIndex + 1, high);
+    }
+  }
+
+  private static int partition(int[] arr, int low, int high)
+  {
+    int pivot = arr[low];
+    int i = low;
+    int j = high;
     
+    while (i < j)
+    {
+      while (arr[i] <= pivot && i <= high - 1)
+        i++;
+      while (arr[j] > pivot && j >= low + 1)
+        j--;
+      if (i < j)
+      {
+        int temp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = temp;
+      }
+    }
+    int temp = arr[j];
+    arr[j] = arr[low];
+    arr[low] = temp;
+    return j;
   }
 }
