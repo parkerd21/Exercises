@@ -44,10 +44,7 @@ public class Sorting {
           swapOccurred = true;
         }
       }
-      if (!swapOccurred)
-      {
-        break;
-      }
+      if (!swapOccurred) break;
     }
     return arr;
   }
@@ -77,10 +74,7 @@ public class Sorting {
   // Space complexity O(n)
   public static void mergeSort(int[] arr, int low, int high)
   {
-    if (low >= high)
-    {
-      return;
-    }
+    if (low >= high) return;
 
     int mid = (low + high) / 2;
 
@@ -137,17 +131,17 @@ public class Sorting {
     if (n == 1) return;
     boolean swapped = false;
 
-      for (int j = 0; j < n - 1; j++)
+    for (int j = 0; j < n - 1; j++)
+    {
+      if (arr[j] > arr[j+1])
       {
-        if (arr[j] > arr[j+1])
-        {
-          int temp = arr[j+1];
-          arr[j+1] = arr[j];
-          arr[j] = temp;
-          swapped = true;
-        }
+        int temp = arr[j+1];
+        arr[j+1] = arr[j];
+        arr[j] = temp;
+        swapped = true;
       }
-      if (!swapped) return;
+    }
+    if (!swapped) return;
 
       recursiveBubbleSort(arr, n - 1);
   }
