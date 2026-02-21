@@ -3,6 +3,7 @@ package test.java;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import main.java.Arrayz;
+import java.util.List;
 
 public class ArrayzTest {
   
@@ -169,6 +170,27 @@ public class ArrayzTest {
     assertArray(expected, input);
   }
 
+  @Test
+  public void test_linearSearch()
+  {
+    int[] input = {1,2,3,4,5};
+    int expected = 2;
+
+    int actual = Arrayz.linearSearch(input, 3);
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void test_unionSortedArrays()
+  {
+    int[] arr1 = {1,2,3,4,5};
+    int[] arr2 = {2,3,4,4,5};
+    int[] expected = {1,2,3,4,5};
+
+    List<Integer> actual = Arrayz.unionSortedArrays(arr1, arr2);
+    assertArray(expected, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {
@@ -178,5 +200,16 @@ public class ArrayzTest {
       assertEquals(expected[i], actual[i]);
     }
   }
+
+    private void assertArray(int[] expected, List<Integer> actual)
+  {
+    assertEquals(expected.length, actual.size());
+    for (int i = 0; i < expected.length; i++)
+    {
+      assertEquals(expected[i], (int)actual.get(i));
+    }
+  }
+
+
 
 }

@@ -1,6 +1,8 @@
 package main.java;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Arrayz {
 
@@ -286,5 +288,80 @@ public class Arrayz {
         j++;
       }
     }
+  }
+
+  // O(n) time complexity
+  // O(1) space complexity
+  public static int linearSearch(int[] arr, int num)
+  {
+    int index = -1;
+    for (int i = 0; i < arr.length; i++)
+    {
+      if (arr[i] == num)
+      {
+       index = i;
+       break;
+      }
+    }
+    return index;
+  }
+
+
+  // O(m + n) time complexity 
+  // O(m + n) space complexity
+  public static List<Integer> unionSortedArrays(int[] arr1, int[] arr2)
+  {
+    int i = 0, j = 0;
+
+    List<Integer> unionArray = new ArrayList<>();
+
+    while (i < arr1.length && j < arr2.length)
+    {
+      if (arr1[i] < arr2[j])
+      {
+        if (unionArray.isEmpty() || unionArray.getLast() != arr1[i])
+        {
+          unionArray.add(arr1[i]);
+        }
+        i++;
+      }
+      else if (arr2[j] < arr1[i])
+      {
+        if (unionArray.isEmpty() || unionArray.getLast() != arr2[j])
+        {
+          unionArray.add(arr2[j]);
+        }
+        j++;
+      } 
+      else 
+      {
+        if (unionArray.isEmpty() || unionArray.getLast() != arr1[i])
+        {
+          unionArray.add(arr1[i]);
+        }
+        i++;
+        j++;
+      }
+    }
+
+    while (i < arr1.length)
+    {
+      if (unionArray.isEmpty() || unionArray.getLast() != arr1[i])
+      {
+        unionArray.add(arr1[i]);
+      }
+      i++;
+    }
+
+    while (j < arr2.length)
+    {
+      if (unionArray.isEmpty() || unionArray.getLast() != arr2[j])
+      {
+        unionArray.add(arr2[j]);
+      }
+      j++;
+    }
+
+    return unionArray;
   }
 }
