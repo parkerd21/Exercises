@@ -191,6 +191,22 @@ public class ArrayzTest {
     assertArray(expected, actual);
   }
 
+  @Test
+  public void test_findMissingNumber()
+  {
+    int[] input = {8,2,4,5,3,7,1};
+    int expected = 6;
+
+    int actual = Arrayz.findMissingNumber(input);
+    assertEquals(expected, actual);
+
+    input = new int[]{1,2,3,5};
+    expected = 4;
+
+    actual = Arrayz.findMissingNumber(input);
+    assertEquals(expected, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {

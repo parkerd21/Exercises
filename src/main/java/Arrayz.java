@@ -364,4 +364,84 @@ public class Arrayz {
 
     return unionArray;
   }
+
+  // // bruteForce
+  // // O(n^2)
+  // public static int findMissingNumber(int[] arr)
+  // {
+  //   int n = arr.length + 1;
+  //   for (int i = 1; i <= n; i++)
+  //   {
+  //     boolean found = false;
+  //     for(int j = 0; j < n - 1; j++)
+  //     {
+  //       if (arr[j] == i)
+  //       {
+  //         found = true;
+  //         break;
+  //       }
+  //     }
+  //     if (!found)
+  //       return i;
+  //   }
+  //   return -1;
+  // }
+
+  // // better. Uses hash array
+  // // O(n) time and space complexity
+  // public static int findMissingNumber(int[] arr)
+  // {
+  //   int n = arr.length+1;
+  //   int[] hashArray = new int[n+1];
+
+  //   for (int i = 0; i < n-1; i++)
+  //   {
+  //     int num = arr[i];
+  //     hashArray[num]++;
+  //   }
+
+  //   for (int i = 1; i <= n; i++)
+  //   {
+  //     if (hashArray[i] == 0)
+  //     {
+  //       return i;
+  //     }
+  //   }
+  //   return -1;
+  // }
+
+  // // expected approach. Using sum of n terms formula
+  // // O(n) time complexity
+  // // O(1) space complexity
+  // public static int findMissingNumber(int[] arr)
+  // {
+  //   // sum of the first n natural numbers is (n * (n+1))/2
+  //   int n = arr.length + 1; // We add one cause we're missing a number
+  //   int sum = (n * (n+1))/2;
+  //   int missingSum = 0;
+  //   for (int i = 0; i < n - 1; i++)
+  //   {
+  //     missingSum += arr[i];
+  //   }
+  //   return sum - missingSum;
+  // }
+
+  // expected approach. Using XOR operation
+  // O(n) time complexity
+  // O(1) spzce complexity
+  public static int findMissingNumber(int[] arr)
+  {
+    int xor1 = 0, xor2 = 0;
+    for (int i = 0; i < arr.length; i++)
+    {
+      xor1 ^= arr[i];
+    }
+
+    for (int i = 1; i <= arr.length + 1; i++)
+    {
+      xor2 ^= i;
+    }
+
+    return xor1 ^ xor2;
+  }
 }
