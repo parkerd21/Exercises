@@ -444,4 +444,25 @@ public class Arrayz {
 
     return xor1 ^ xor2;
   }
+
+  // O(n) time complexity
+  // O(1) space complexity
+  public static int countMaximumConsecutiveOnes(int[] arr)
+  {
+    int max = 0, tempMax = 0;
+
+    for (int i = 0; i < arr.length; i++)
+    {
+      if (arr[i] == 1)
+      {
+        tempMax++;
+      }
+      else
+      {
+        tempMax = 0;
+      }
+      max = Math.max(max, tempMax);
+    }
+    return max;
+  }
 }

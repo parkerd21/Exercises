@@ -207,6 +207,16 @@ public class ArrayzTest {
     assertEquals(expected, actual);
   }
 
+  @Test
+  public void test_countMaximumConsecutiveOnes()
+  {
+    int[] input = {1,1,0,1,1,1};
+    int expected = 3;
+
+    int actual = Arrayz.countMaximumConsecutiveOnes(input);
+    assertEquals(expected, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {
