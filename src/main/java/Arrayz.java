@@ -3,6 +3,9 @@ package main.java;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.HashMap;
 
 public class Arrayz {
 
@@ -464,5 +467,39 @@ public class Arrayz {
       max = Math.max(max, tempMax);
     }
     return max;
+  }
+
+  // // O(n) + O(n) time complexity
+  // public static int findNumberThatOnlyAppearsOnce(int[] arr)
+  // {
+  //   Map<Integer, Integer> countMap = new HashMap<>();
+  //   for (int i = 0; i < arr.length; i++)
+  //   {
+  //     countMap.put(arr[i], countMap.getOrDefault(arr[i], 0) + 1);
+  //   }
+
+  //   for (Entry<Integer, Integer> entry : countMap.entrySet())
+  //   {
+  //     if (entry.getValue() == 1)
+  //     {
+  //       return entry.getKey();
+  //     }
+  //   }
+  //   return -1;
+  // }
+
+  // Optimal
+  // O(n) time complexity
+  // O(n) space complexity
+  // Approach: perform the XOR of all elements of the array and the final XOR will be the answer
+  public static int findNumberThatOnlyAppearsOnce(int[] arr)
+  {
+    int result = 0;
+    for (int i = 0; i < arr.length; i++)
+    {
+      result ^= arr[i];
+    }
+
+    return result;
   }
 }

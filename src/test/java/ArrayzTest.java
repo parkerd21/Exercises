@@ -217,6 +217,21 @@ public class ArrayzTest {
     assertEquals(expected, actual);
   }
 
+  @Test
+  public void test_findNumberThatOnlyAppearsOnce()
+  {
+    int[] input = {2,2,1};
+    int expected = 1;
+
+    int actual = Arrayz.findNumberThatOnlyAppearsOnce(input);
+    assertEquals(expected, actual);
+
+    input = new int[]{4,1,2,1,2};
+    expected = 4;
+    actual = Arrayz.findNumberThatOnlyAppearsOnce(input);
+    assertEquals(expected, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {
