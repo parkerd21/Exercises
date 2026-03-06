@@ -502,4 +502,59 @@ public class Arrayz {
 
     return result;
   }
+
+  // // O(n^2) time complexity
+  // // O(1) space complexity
+  // public static int longestSubArrayWithSumK(int[] arr, int k)
+  // {
+  //   int maxL = 0;
+
+  //   for (int i = 0; i < arr.length - 1; i++)
+  //   {
+  //     if (arr[i] > k)
+  //       continue;
+  //     int sum = arr[i];
+  //     for (int j = i + 1; j < arr.length; j++)
+  //     {
+  //       sum += arr[j];
+  //       if (sum > k)
+  //         break;
+  //       if (sum == k)
+  //       {
+  //         maxL = Math.max(maxL, j - i + 1);
+  //         break;
+  //       }
+  //     }
+  //   }
+  //   return maxL;
+  // }
+
+  // optimal, use sliding window
+  // O(n) time complexity
+  // O(1) space complexity
+  public static int longestSubArrayWithSumK(int[] arr, int k)
+  {
+    int i = 0, j = 0;
+    int sum = arr[0];
+    int maxL = 0;
+
+    while (j < arr.length)
+    {
+      while (i <= j && sum > k)
+      {
+        sum -= arr[i];
+        i++;
+      }
+      if (sum == k)
+      {
+        maxL = Math.max(maxL, j - i + 1);
+      }
+      j++;
+      if (j < arr.length)
+      {
+        sum += arr[j];
+      }
+    }
+    return maxL;
+  }
 }

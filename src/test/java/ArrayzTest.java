@@ -232,6 +232,21 @@ public class ArrayzTest {
     assertEquals(expected, actual);
   }
 
+  @Test
+  public void test_longestSubArrayWithSumK()
+  {
+    int[] input = {10,5,2,7,1,9};
+
+    int actual = Arrayz.longestSubArrayWithSumK(input, 15);
+    assertEquals(4, actual);
+
+    actual = Arrayz.longestSubArrayWithSumK(input, 19);
+    assertEquals(4, actual);
+
+    actual = Arrayz.longestSubArrayWithSumK(input, 7);
+    assertEquals(2, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {
