@@ -247,6 +247,15 @@ public class ArrayzTest {
     assertEquals(2, actual);
   }
 
+  @Test
+  public void test_longestSubArrayWithSumZero()
+  {
+    int[] input = {9, -3, 3, -1, 6, -5};
+
+    int actual = Arrayz.longestSubArrayWithSumZero(input);
+    assertEquals(5, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {

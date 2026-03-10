@@ -557,4 +557,55 @@ public class Arrayz {
     }
     return maxL;
   }
+
+  // // Brute Force
+  // // O(n^2) time complexity
+  // // O(1) space complexity
+  // public static int longestSubArrayWithSumZero(int[] arr)
+  // {
+  //   int sum = 0;
+  //   int maxL = 0;
+  //   for (int i = 0; i < arr.length; i++)
+  //   {
+  //     for (int j = i; j < arr.length; j++)
+  //     {
+  //       sum += arr[j];
+  //       if (sum == 0)
+  //       {
+  //         int length = j - i + 1;
+  //         maxL = Math.max(maxL, length);
+  //       }
+  //     }
+  //     sum = 0;
+  //   }
+  //   return maxL;
+  // }
+
+  // optimal. prefix sum pattern
+  // O(n) time complexity
+  // O(1) space complexity
+  public static int longestSubArrayWithSumZero(int[] arr)
+  {
+    Map<Integer, Integer> prefixSumMap = new HashMap<>();
+    int maxL = 0;
+    int sum = 0;
+
+    for (int i = 0; i < arr.length; i++)
+    {
+      sum += arr[i];
+      if (sum == 0)
+      {
+        maxL = Math.max(maxL, i + 1);
+      }
+      else if (prefixSumMap.containsKey(sum))
+      {
+        maxL = Math.max(maxL, i - prefixSumMap.get(sum));
+      }
+      else 
+      {
+        prefixSumMap.put(sum, i);
+      }
+    }
+    return maxL;
+  }
 }
