@@ -608,4 +608,99 @@ public class Arrayz {
     }
     return maxL;
   }
+
+  // // brute force
+  // // O(n^2) time complexity
+  // // O(1) space complexity
+  // public static String twoSumExists(int[] arr, int target)
+  // {
+  //   for (int i = 0; i < arr.length -1; i++)
+  //   {
+  //     int sum = arr[i];
+  //     for (int j = i + 1; j < arr.length; j++)
+  //     {
+  //       if (sum + arr[j] == target)
+  //       {
+  //         return "YES";
+  //       }
+  //     }
+  //   }
+  //   return "NO";
+  // }
+
+  // public static int[] twoSumIndices(int[] arr, int target)
+  // {
+  //   for (int i = 0; i < arr.length -1; i++)
+  //   {
+  //     int sum = arr[i];
+  //     for (int j = i + 1; j < arr.length; j++)
+  //     {
+  //       if (sum + arr[j] == target)
+  //       {
+  //         return new int[] {i, j};
+  //       }
+  //     }
+  //   }
+  //   return new int[] {-1, -1};
+  // }
+
+  // optimal approach
+  // O(n logn) time complexity
+  // O(1) space complexity
+  public static String twoSumExists(int[] arr, int target)
+  {
+    // sort arr
+    Arrays.sort(arr);
+
+    int i = 0; // left
+    int j = arr.length -1; // right
+
+    while (i < j)
+    {
+      int sum = arr[i] + arr[j];
+      if (sum == target)
+        return "YES";
+      if (sum < target)
+        i++;
+      else if (sum > target)
+        j--;
+    }
+    return "NO";
+  }
+
+  // optimal approach
+  // O(n logn) time complexity
+  // O(n) space complexity
+  public static int[] twoSumIndices(int[] arr, int target)
+  {
+    int n = arr.length;
+    // need to keep track of the value and indices since we will be changing the original order when we sort
+    int[][] numsWithIndex = new int[n][2];
+
+    for (int i = 0; i < n; i++)
+    {
+      numsWithIndex[i] = new int[]{arr[i], i}; // [value, index]
+    }
+
+    Arrays.sort(numsWithIndex, (a, b) -> Integer.compare(a[0], b[0]));
+
+    int i = 0; // left
+    int j = n - 1; // right
+
+    // when i and j cross we are done
+    while (i < j)
+    {
+      int sum = numsWithIndex[i][0] + numsWithIndex[j][0];
+      if (sum == target)
+        return new int[] {numsWithIndex[i][1], numsWithIndex[j][1]};
+      if (sum < target)
+        i++;
+      else
+        j--;
+    }
+    return new int[] {-1,-1};
+  }
+
+
+
 }

@@ -256,6 +256,28 @@ public class ArrayzTest {
     assertEquals(5, actual);
   }
 
+  @Test
+  public void test_twoSumVariant1()
+  {
+    int[] input = {2,6,5,8,11};
+    int target = 14;
+    String expected = "YES";
+
+    String actual = Arrayz.twoSumExists(input, target);
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void test_twoSumVariant2()
+  {
+    int[] input = {2,6,5,8,11};
+    int target = 14;
+    int[] expected = new int[] {1,3};
+
+    int[] actual = Arrayz.twoSumIndices(input, target);
+    assertArray(expected, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {
