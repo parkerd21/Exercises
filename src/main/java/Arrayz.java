@@ -701,6 +701,40 @@ public class Arrayz {
     return new int[] {-1,-1};
   }
 
+  // brute force
+  // you can count how many 0s, 1s, and 2s are in the array. Then loop through array again filling in the correct values.
+  // O(n) time complexity
+  // O(1) space complexity
+
+  // Optimal. Dutch National Flag algorithm
+  // O(n) time complexity
+  // O(1) space complexity
+  public static int[] sortArrayOf012(int[] arr)
+  {
+    int l = 0, c = 0, r = arr.length-1;
+    while (c <= r)
+    {
+      if (arr[c] == 0)
+      {
+        int temp = arr[c];
+        arr[c] = arr[l];
+        arr[l] = temp;
+        l++; c++;
+      }
+      if (arr[c] == 1)
+      {
+        c++;
+      }
+      else {
+        int temp = arr[r];
+        arr[r] = arr[c];
+        arr[c] = temp;
+        r--;
+      }
+    }
+    return arr;
+  }
+
 
 
 }

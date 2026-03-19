@@ -278,6 +278,16 @@ public class ArrayzTest {
     assertArray(expected, actual);
   }
 
+  @Test
+  public void test_sortArrayOf012()
+  {
+    int[] input = {1,0,2,1,0};
+    int[] expected = {0,0,1,1,2};
+
+    int[] actual = Arrayz.sortArrayOf012(input);
+    assertArray(expected, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {
