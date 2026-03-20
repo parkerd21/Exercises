@@ -735,6 +735,55 @@ public class Arrayz {
     return arr;
   }
 
+  // // Better approach
+  // // Time complexity O(n)
+  // // Space complexity O(n)
+  // public static int findMajorityElementOccuringMoreThanHalfTimes(int[] arr)
+  // {
+  //   Map<Integer, Integer> elementCountMap = new HashMap<>();
+  //   int largest = 0;
+  //   Integer keyOfLargest = -1;
+  //   for (int i = 0; i < arr.length; i++)
+  //   {
+  //     elementCountMap.put(arr[i], elementCountMap.getOrDefault(arr[i], 0) + 1);
+  //     if (elementCountMap.get(arr[i]) > largest)
+  //     {
+  //       largest = elementCountMap.get(arr[i]);
+  //       keyOfLargest = arr[i];
+  //     }
+  //     if (largest > arr.length/2)
+  //     {
+  //       return keyOfLargest;
+  //     }
+  //   }
+  //   return keyOfLargest;
+  // }
+
+  // Optimal approach
+  // Time complexity O(n)
+  // Space complexity O(1)
+  public static int findMajorityElementOccuringMoreThanHalfTimes(int[] arr)
+  {
+    int count = 0;
+    int element = -1;
+
+    for (int i = 0; i < arr.length; i++)
+    {
+      if (count == 0)
+      {
+        element = arr[i];
+      }
+      if (element == arr[i])
+      {
+        count++;
+      } else 
+      {
+        count--;
+      }
+    }
+    return element;
+  }
+
 
 
 }

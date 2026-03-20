@@ -288,6 +288,21 @@ public class ArrayzTest {
     assertArray(expected, actual);
   }
 
+  @Test
+  public void test_findMajorityElementOccuringMoreThanHalfTimes()
+  {
+    int[] input = {7,0,0,1,7,7,2,7,7};
+    int expected = 7;
+
+    int actual = Arrayz.findMajorityElementOccuringMoreThanHalfTimes(input);
+    assertEquals(expected, actual);
+
+    input = new int[]{2};
+    expected = 2;
+    actual = Arrayz.findMajorityElementOccuringMoreThanHalfTimes(input);
+    assertEquals(expected, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {
