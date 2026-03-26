@@ -303,6 +303,38 @@ public class ArrayzTest {
     assertEquals(expected, actual);
   }
 
+  @Test
+  public void test_findMaxSubArraySum()
+  {
+    int[] input = {2, 3, 5, -2, 7, -4};
+    int expected = 15;
+
+    int actual = Arrayz.findMaxSubArraySum(input);
+    assertEquals(expected, actual);
+
+    input = new int[]{2,3,-7,4,7,-4};
+    expected = 11;
+    
+    actual = Arrayz.findMaxSubArraySum(input);
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void test_findMaxSubArraySumIndexes()
+  {
+    int[] input = {2, 3, 5, -2, 7, -4};
+    int[] expected = {0, 4};
+
+    int[] actual = Arrayz.findMaxSubArraySumIndexes(input);
+    assertArray(expected, actual);
+
+    input = new int[]{2,3,-7,4,7,-11,12};
+    expected = new int[]{6, 6};
+    
+    actual = Arrayz.findMaxSubArraySumIndexes(input);
+    assertArray(expected, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {

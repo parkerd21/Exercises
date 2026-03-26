@@ -784,6 +784,66 @@ public class Arrayz {
     return element;
   }
 
+  // // better
+  // // Time complexity O(n^2)
+  // // Space complexity O(1);
+  // public static int findMaxSubArraySum(int[] arr)
+  // {
+  //   int maxSum = Integer.MIN_VALUE;
 
+  //   for (int i = 0; i < arr.length; i++)
+  //   {
+  //     int tempSum = 0;
+  //     for (int j = i; j < arr.length; j++)
+  //     {
+  //       tempSum += arr[j];
+  //       maxSum = Math.max(maxSum, tempSum);
+  //     }
+  //   }
+  //   return maxSum;
+  // }
+
+  // optimal. Kadane's Algorithm
+  // Time Complexity O(n)
+  // Space Complexity O(1)
+  public static int findMaxSubArraySum(int[] arr)
+  {
+    int maxSum = Integer.MIN_VALUE;
+    int sum = 0;
+    for (int i = 0; i < arr.length; i++)
+    {
+      if (sum < 0) sum = 0;
+      sum += arr[i];
+      maxSum = Math.max(maxSum, sum);
+    }
+    return maxSum;
+  }
+
+  // Follow up question:
+  // Can you print the subarray that has the maximum sum?
+  public static int[] findMaxSubArraySumIndexes(int[] arr)
+  {
+    int maxSum = Integer.MIN_VALUE;
+    int sum = 0;
+    int tempStart = 0;
+    int iStart = -1;
+    int iEnd = -1;
+    for (int i = 0; i < arr.length; i++)
+    {
+      if (sum <= 0)
+      {
+        sum = 0;
+        tempStart = i;
+      }
+      sum += arr[i];
+      if (sum > maxSum)
+      {
+        maxSum = sum;
+        iStart = tempStart;
+        iEnd = i;
+      }
+    }
+    return new int[]{iStart, iEnd};
+  }
 
 }
