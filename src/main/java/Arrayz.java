@@ -846,4 +846,39 @@ public class Arrayz {
     return new int[]{iStart, iEnd};
   }
 
+  // // brute force
+  // // time complexity O(n^2)
+  // // space complexity O(1)
+  // // returns maximum profit you can achieve
+  // public static int stockBuyAndSell(int[] arr)
+  // {
+  //   int maxProfit = 0;
+  //   for (int i = 0; i < arr.length -1; i++)
+  //   {
+  //     for (int j = i + 1; j < arr.length; j++)
+  //     {
+  //       int tempProfit = arr[j] - arr[i];
+  //       maxProfit = Math.max(maxProfit, tempProfit);
+  //     }
+  //   }
+  //   return maxProfit;
+  // }
+
+  public static int stockBuyAndSell(int[] arr)
+  {
+    int minPrice = Integer.MAX_VALUE;
+    int maxProfit = 0;
+
+    for (int i = 0; i < arr.length; i++)
+    {
+      if (arr[i] < minPrice)
+      {
+        minPrice = arr[i];
+      }
+      else {
+        maxProfit = Math.max(maxProfit, arr[i] - minPrice);
+      }
+    }
+    return maxProfit;
+  }
 }

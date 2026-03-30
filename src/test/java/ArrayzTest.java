@@ -335,6 +335,16 @@ public class ArrayzTest {
     assertArray(expected, actual);
   }
 
+  @Test
+  public void test_stockBuyAndSell()
+  {
+    int[] input = {7,1,5,3,6,4};
+    int expected = 5;
+
+    int actual = Arrayz.stockBuyAndSell(input);
+    assertEquals(expected, actual);
+  }
+
    
   private void assertArray(int[] expected, int[] actual)
   {
