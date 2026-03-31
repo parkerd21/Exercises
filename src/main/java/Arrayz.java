@@ -263,35 +263,23 @@ public class Arrayz {
 
   // O(n) time complexity
   // O(1) space complexity
-  public static void optimalMoveAllZerosToEnd(int[] arr)
+public static void optimalMoveAllZerosToEnd(int[] nums) 
+{
+  int insertPos = 0;
+  for (int i = 0; i < nums.length; i++) 
   {
-    // find first zero
-    int j = -1;
-    for (int i = 0; i < arr.length; i++)
+    if (nums[i] != 0) 
     {
-      if (arr[i] == 0)
+      // Only swap when the element isn't already in position
+      if (i != insertPos) 
       {
-        j = i;
-        break;
+        nums[insertPos] = nums[i];
+        nums[i] = 0;
       }
-    }
-
-    // no zeros found
-    if (j == -1) return;
-    
-    for (int i = j+1; i < arr.length; i++)
-    {
-      if (arr[i] != 0)
-      {
-        // swap with arr[j]
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-        // move j to next zero
-        j++;
-      }
+      insertPos++;
     }
   }
+}
 
   // O(n) time complexity
   // O(1) space complexity
